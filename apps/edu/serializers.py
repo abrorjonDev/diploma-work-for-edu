@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.forms import model_to_dict
 
-from edu.models import Course, Teacher, Student
+from edu.models import Course, Teacher, Student, FormRequest
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -36,3 +36,16 @@ class StudentSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         data['courses'] = instance.courses.values('id', 'title', 'status')
         return data
+
+
+class FormRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FormRequest
+        fields = "__all__"
+        read_only_fields = ('is_seen',)
+
+
+class FormRequestSeenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FormRequest
+        fields = ('is_seen',)

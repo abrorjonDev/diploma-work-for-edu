@@ -4,9 +4,10 @@ from django.db import models
 class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(default="")
-    image = models.ImageField(upload_to='courses')
+    image = models.ImageField(upload_to='courses', null=True)
     status = models.BooleanField(default=True)
     teacher = models.ForeignKey('edu.Teacher', models.CASCADE)
+    price = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -30,4 +31,14 @@ class Student(models.Model):
     courses = models.ManyToManyField(Course)
 
     def __str__(self) -> str:
+        return self.fish
+
+
+class FormRequest(models.Model):
+    fish = models.CharField("Full name", max_length=120)
+    phone = models.CharField("Phone number", max_length=13)
+    comment = models.TextField()
+    is_seen = models.BooleanField(default=False)
+
+    def __str__(self):
         return self.fish

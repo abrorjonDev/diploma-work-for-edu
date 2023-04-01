@@ -12,3 +12,5 @@ MONTH = (
     (11, "Nowember"),
     (12, "December")
 )
+
+YEARS = tuple(zip(range(2000, 2050), range(2000, 2050)))

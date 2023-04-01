@@ -2,9 +2,9 @@ from django.urls import path
 
 from edu.views import (
     CoursesAPIView, CourseAPIView, TeachersAPIView, TeacherAPIView,
-    StudentAPIView, StudentsAPIView
+    StudentAPIView, StudentsAPIView,
+    FormRequestsAPIView, FormRequestDetailAPIView,
     )
-
 
 
 urlpatterns = [
@@ -16,4 +16,7 @@ urlpatterns = [
 
     path('students/', StudentsAPIView.as_view(), name='students'),
     path('students/<int:pk>', StudentAPIView.as_view(), name='student'),
+
+    path('forms/', FormRequestsAPIView.as_view(), name='forms'),
+    path('forms/<int:pk>', FormRequestDetailAPIView.as_view(), name='form'),
 ]

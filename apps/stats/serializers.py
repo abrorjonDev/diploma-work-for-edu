@@ -8,7 +8,6 @@ class IncomeSerializer(serializers.ModelSerializer):
         model = Income
         fields = "__all__"
 
-    
     def to_representation(self, instance):
         data = super().to_representation(instance)
         if instance.course:
@@ -22,4 +21,7 @@ class OutcomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Outcome
         fields = "__all__"
-        
+
+
+class FilterSerializer(serializers.Serializer):
+    year = serializers.IntegerField(required=False)
